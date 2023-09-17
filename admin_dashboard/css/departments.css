@@ -1,0 +1,65 @@
+body {
+    background-color: white;
+    font-family: "Arial";
+    font-size: 1em;
+}
+
+.ui.segment,
+.ui.header,
+h1 {
+    color: navy !important;
+}
+
+/* Style for the new navbar */
+.ui.inverted.navy.menu {
+    background-color: navy !important;
+}
+
+.ui.inverted.navy.menu .item {
+    font-size: 1em;
+}
+
+.ui.inverted.navy.menu .active.item {
+    background-color: darkblue !important;
+    border-radius: 3px;
+}
+
+.ui.large.circular.image {
+    margin-right: 10px;
+    width: 64px;
+    height: 64px;
+}
+
+.smaller-text {
+    font-size: 1em;
+}
+
+.ui.mini.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ui.mini.buttons .button {
+    margin-right: 4px;
+}
+
+.ui.mini.buttons .button:last-child {
+    margin-right: 0;
+}
+
+/* Custom styles */
+.welcome-section {
+    background-color: #f4f4f4;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.welcome-header {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.worker-image {
+    margin-top: 20px;
+    max-width: 300px;
+}

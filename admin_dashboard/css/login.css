@@ -1,0 +1,47 @@
+/* Main Background */
+.main-background {
+    background-image: url("../assets/background.jpeg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Arial";
+    color:white;
+}
+
+/* Header Container */
+.header-container {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+/* Company Logo */
+.company-logo {
+    width: 100px;
+}
+
+/* Login Box */
+.login-box {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2em;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Semantic UI Overrides */
+.ui.form .field > .ui.input > input {
+    border-radius: 4px;
+}
+
+.ui.teal.button {
+    border-radius: 4px;
+    display: block;
+    margin: auto;
+}
+
+/* Error Message */
+.ui.error.message {
+    display: none; /* Initially hidden */
+}

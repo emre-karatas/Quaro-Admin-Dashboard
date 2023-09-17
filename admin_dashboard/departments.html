@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tasks Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/dataTables.semanticui.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/dataTables.semanticui.min.js"></script>
+    <script src="https://code.highcharts.com/gantt/highcharts-gantt.js"></script>
+    <script src="https://code.highcharts.com/gantt/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/departments.css">
+</head>
+
+<body>
+
+<!-- Add Department Modal -->
+<div class="ui modal" id="addDepartmentModal">
+    <div class="header">Add New Department</div>
+    <div class="content">
+        <form class="ui form">
+            <div class="field">
+                <label>Department Name</label>
+                <input type="text" id="addName">
+            </div>
+            <div class="field">
+                <label>Department Description</label>
+                <textarea id="addDescription"></textarea>
+            </div>
+
+            <div class="field">
+                <label>Salary</label>
+                <input type="number" id="addSalary">
+            </div>
+        </form>
+    </div>
+    <div class="actions">
+        <button class="ui negative button">Cancel</button>
+        <button class="ui positive button" onclick="addDepartment()">Add Department</button>
+    </div>
+</div>
+
+<!-- Update Department  Modal -->
+<div class="ui tiny modal" id="updateModal">
+    <div class="header">Update Department</div>
+    <div class="content">
+        <form class="ui form" id="updateForm">
+            <div class="field">
+                <label>Department Name</label>
+                <input type="text" name="name" id="updateName">
+            </div>
+            <div class="field">
+                <label>Department Description</label>
+                <textarea  name="description" id="updateDescription"></textarea>
+            </div>
+            <div class="field">
+                <label>Salary</label>
+                <input type="number" name="salary" id="updateSalary">
+            </div>
+        </form>
+    </div>
+    <div class="actions">
+        <div class="ui negative button">Cancel</div>
+        <div class="ui positive button" id="confirmUpdate">Update</div>
+    </div>
+</div>
+
+<!-- Delete Department Modal -->
+<div class="ui tiny modal" id="deleteModal">
+    <div class="header">Delete Department</div>
+    <div class="content">
+        <p>Are you sure you want to delete this department?</p>
+    </div>
+    <div class="actions">
+        <div class="ui negative button">No</div>
+        <div class="ui positive button" id="confirmDelete">Yes</div>
+    </div>
+</div>
+
+<!-- Navbar -->
+<div class="ui inverted navy top fixed menu">
+    <div class="ui container">
+        <a class="header item">
+            <img src="assets/logo.png" alt="Quaro Logo" class="ui large circular image">
+            <span class="smaller-text">Quaro Admin Dashboard</span>
+        </a>
+        <div class="right menu">
+            <a id="employeesLink" class="item">Employees</a>
+            <a id="departmentsLink" class="item">Departments</a>
+            <a id="tasksLink" class="item">Tasks</a>
+
+        </div>
+        <div id="adminInfo" class="item" style="background-color: navy; padding: 8px 16px; border-radius: 8px;">
+            <i class="user circle outline icon teal" style="font-size: 2em; vertical-align: middle;"></i>
+            <div style="display: inline-block; margin-left: 8px; vertical-align: middle;">
+                <span id="adminName" class="ui white label" style="font-size: 1em; font-weight: bold; display: block;">[Name]</span>
+                <span id="adminLastLogin" class="ui grey label" style="font-size: 0.8em; display: none;">Last Login: [Time]</span>
+            </div>
+            <button id="logoutBtn" class="ui red button" style="margin-left: 16px; vertical-align: middle;">
+                Logout
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<div class="welcome-section">
+    <div class="ui container">
+        <div class="ui center aligned segment">
+            <div class="ui circular small image">
+                <img src="assets/departments.jpg" alt="Worker Image" class="worker-image">
+            </div>
+            <div class="welcome-content">
+                <h1 class="ui header welcome-header">Welcome to Department Management Board!</h1>
+                <p class="welcome-text">Manage Quaro departments easily!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Department Table -->
+<div class="ui container department-table">
+    <div class="ui segment">
+        <h2 class="table-header">Departments</h2>
+        <div class="ui right floated button" onclick="showAddDepartmentModal()">Add New Department</div>
+        <table id="departmentTable" class="ui celled table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Department Name</th>
+                <th>Description</th>
+                <th>Average Salary</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody id="departmentList">
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Charts Container -->
+<div class="ui container">
+    <div class="ui segment raised">
+        <!-- Salary Chart -->
+        <div id="salaryBarChart" style="height: 400px;"></div>
+    </div>
+</div>
+
+
+<script src="departments.js"></script>
+
+</body>
+</html>
